@@ -1,4 +1,6 @@
 package com.example.demo.b
 
-interface PackageInfo {
-}
+import org.springframework.modulith.ApplicationModule
+
+@ApplicationModule
+interface PackageInfo

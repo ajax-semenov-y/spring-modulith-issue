@@ -1,12 +1,12 @@
-package com.example.demo.service
+package com.example.demo.c.service
 
 import org.springframework.modulith.NamedInterface
 
 /**
- * This is API of root
+ * This is module-c API
  */
 @NamedInterface
-class RootService {
+class ModuleC {
 
     fun hello(): String = "root"
 }

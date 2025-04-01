@@ -7,7 +7,7 @@ class ApplicationArchUnitTest {
 
     @Test
     fun `should verify app modules`() {
-        val appModules = ApplicationModules.of(DemoApplication::class.java)
+        val appModules = ApplicationModules.of(ExampleModulithApplication::class.java)
         appModules.verify()
     }
 }

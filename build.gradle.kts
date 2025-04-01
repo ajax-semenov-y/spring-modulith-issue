@@ -1,10 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "3.1.1"
-	id("io.spring.dependency-management") version "1.1.0"
-	kotlin("jvm") version "1.8.22"
-	kotlin("plugin.spring") version "1.8.22"
+	java
+	id("org.springframework.boot") version "3.4.4"
+	id("io.spring.dependency-management") version "1.1.7"
+	kotlin("jvm") version "1.9.21"
+	kotlin("plugin.spring") version "1.9.21"
+	kotlin("kapt") version "1.9.21"
 }
 
 group = "com.example"
@@ -22,13 +24,14 @@ repositories {
 }
 
 dependencies {
-	implementation(platform("org.springframework.modulith:spring-modulith-bom:1.0.0-SNAPSHOT"))
+	implementation(platform("org.springframework.modulith:spring-modulith-bom:1.3.4"))
+	kapt(platform("org.springframework.modulith:spring-modulith-bom:1.3.4"))
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-
 	implementation("org.springframework.modulith:spring-modulith-starter-core")
+	kapt("org.springframework.modulith:spring-modulith-apt:1.3.4")
 
 	testImplementation("org.springframework.modulith:spring-modulith-starter-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -36,14 +39,13 @@ dependencies {
 
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
-		freeCompilerArgs += "-Xjsr305=strict"
-		jvmTarget = "17"
+		jvmTarget = "21"
 	}
 }
 
 tasks.withType<JavaCompile> {
-	sourceCompatibility = "17"
-	targetCompatibility = "17"
+	sourceCompatibility = "21"
+	targetCompatibility = "21"
 }
 
 tasks.withType<Test> {

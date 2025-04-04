@@ -1,5 +1,6 @@
 package com.example.demo.b.service
 
+import com.example.demo.a.service.ModuleA
 import org.springframework.modulith.NamedInterface
 
 /**
@@ -8,7 +9,9 @@ import org.springframework.modulith.NamedInterface
 @NamedInterface
 class ModuleB {
 
-    fun doSomething(): String = "hello"
+    private val moduleA: ModuleA = ModuleA()
+
+    fun doSomething(): String = moduleA.doSomething() + "hello"
 
     fun doSomethingElse(): String = "world"
 }

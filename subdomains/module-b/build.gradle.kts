@@ -14,7 +14,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.springframework.modulith:spring-modulith-starter-core")
-    kapt("org.springframework.modulith:spring-modulith-apt:1.3.4")
+    //kapt("org.springframework.modulith:spring-modulith-apt:1.3.4")
 
     testImplementation("org.springframework.modulith:spring-modulith-starter-test")
     testImplementation("org.springframework.boot:spring-boot-starter-test")

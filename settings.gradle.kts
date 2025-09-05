@@ -7,5 +7,6 @@ dependencyResolutionManagement {
     }
 }
 
-include("module-a")
-include("module-b")
+include("subdomains")
+include("subdomains:module-a")
+include("subdomains:module-b")

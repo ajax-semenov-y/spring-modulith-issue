@@ -2,33 +2,13 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java
-    id("org.springframework.boot") version "3.4.4"
-    id("io.spring.dependency-management") version "1.1.7"
     kotlin("jvm") version "1.9.21"
-    kotlin("plugin.spring") version "1.9.21"
     kotlin("kapt") version "1.9.21"
-}
-
-group = "com.example"
-version = "0.0.1-SNAPSHOT"
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-}
-
-repositories {
-    mavenCentral()
-    maven {
-        url = uri("https://repo.spring.io/snapshot")
-    }
 }
 
 dependencies {
     implementation(platform("org.springframework.modulith:spring-modulith-bom:1.3.4"))
     kapt(platform("org.springframework.modulith:spring-modulith-bom:1.3.4"))
-
-    implementation(project(":subdomains"))
-
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
@@ -40,6 +20,12 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         jvmTarget = "21"
@@ -49,8 +35,4 @@ tasks.withType<KotlinCompile> {
 tasks.withType<JavaCompile> {
     sourceCompatibility = "21"
     targetCompatibility = "21"
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
 }
